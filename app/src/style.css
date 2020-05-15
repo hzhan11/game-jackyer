@@ -1,0 +1,24 @@
+body
+{
+    background-color:#4c5561;
+    margin-left: 20;
+    margin-right: 20;
+    margin-top: 20;
+}
+#tableTop {
+    width: 1410px;
+    height: 700px;
+    vertical-align:top;
+}
+
+tr{
+    vertical-align:top;
+}
+
+td{
+    vertical-align:top;
+}
+
+.ajskdfj{
+    background-color:rgb(60, 65, 65);
+}
