@@ -69,6 +69,27 @@ def display():
                 cv2.imshow("haha",im)
                 cv2.waitKey()
 
-capture_screen(True)
+def foo():
+    import pymongo
+    gjdb = pymongo.MongoClient("mongodb://localhost:8888/")['gamejackyer']
+
+    files = glob("C:\\01_Works\\game-jackyer\\server\\res\\*.png")
+    files.sort()
+    for file in files:
+        _id = int(file.split("\\")[-1].replace("img","").replace(".png",""))
+        server_path = "img/" + str(_id) + ".png"
+        dump_file = "C:\\01_Works\\game-jackyer\\server\\res\\img" + "\\" + str(_id) + ".png"
+        os.rename(file, dump_file)
+        new_image = {
+                '_id': _id,
+                "uuid": str(uuid.uuid1()),
+                "url": server_path,
+                "bboxs": [],
+                "scenes": []
+        }
+        gjdb['images'].insert_one(new_image)
+        print(dump_file + " saved")
+
+foo()
 #generate_json()
 #display()

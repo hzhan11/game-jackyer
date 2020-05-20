@@ -29,7 +29,7 @@ training_folder = '.'
 modelfile=training_folder+r'\game.h5'
 labelbin=training_folder+r'\game.pickle'
 
-EPOCHS = 100
+EPOCHS = 200
 INIT_LR = 1e-3
 BS = 32
 IMAGE_DIMS = (200, 120, 3)
@@ -70,7 +70,7 @@ def train(X, Y, mlb):
 		finalact="sigmoid")
 
 	opt = Adam(lr=INIT_LR, decay=INIT_LR / EPOCHS)
-	model.compile(loss="binary_crossentropy", optimizer=opt,metrics=["accuracy"])
+	model.compile(loss="binary_crossentropy", optimizer=opt, metrics=["accuracy"])
 
 	#earlyStopping = EarlyStopping(monitor='val_loss', patience=10, verbose=0, mode='min')
 	mcp_save = ModelCheckpoint(modelfile, save_best_only=True, monitor='val_accuracy', mode='max')

@@ -122,7 +122,7 @@ class WebServer:
    def dump_screen(self, frame_raw):
       _id = int(time.time() * 1000)
       server_path = "img/" + str(_id) + ".png"
-      dump_file = self.dev.res_path + str(_id) + ".png"
+      dump_file = self.dev.res_path + "\\" + str(_id) + ".png"
       cv2.imwrite(dump_file, frame_raw)
       new_image = {
             '_id': _id,
